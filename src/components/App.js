@@ -4,6 +4,8 @@ import Picture from "../components/Picture"
 import PictureDetails from "../components/PictureDetails"
 import axios from "axios"
 import { BASE_URL, API_KEY } from '../constants'
+import { ThemeProvider } from "styled-components"
+import theme from '../Theme';
 
 function App() {
   const[pictureObj, setPictureObj]=useState([])
@@ -20,14 +22,16 @@ function App() {
     }, [])
   return (
     <>
-    <Picture 
-      url={pictureObj.url}
-    />
-    <PictureDetails 
-      title={pictureObj.title}
-      date={pictureObj.date}
-      desc={pictureObj.explanation}
-    />
+    <ThemeProvider theme={theme}>
+      <Picture 
+        url={pictureObj.url}
+      />
+      <PictureDetails 
+        title={pictureObj.title}
+        date={pictureObj.date}
+        desc={pictureObj.explanation}
+      />
+    </ThemeProvider>
     </>
   );
 }
